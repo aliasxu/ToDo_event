@@ -18,4 +18,7 @@ def create_app(config_name):
     bootstrap.init_app(app)
     db.init_app(app)
 
+    from app.auth import auth
+    app.register_blueprint(auth,url_prefix='/auth')
+
     return app

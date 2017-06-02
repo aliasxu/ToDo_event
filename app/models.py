@@ -10,6 +10,10 @@ class User(db.Model):
     password = db.Column(db.String(128))
     events = db.relationship('Event',backref='user',lazy='dynamic')
 
+    def check_password(self,password):
+        return self.password == password
+
+
 
 class Event(db.Model):
     __tablename__ = 'events'
