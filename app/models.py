@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #_*_ coding:utf-8 _*_
 
-from . import db
+from . import db,lm
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -14,6 +14,10 @@ class User(db.Model):
         return self.password == password
 
 
+
+@lm.user_loader
+def load_user(userid):
+    return User.get(userid)
 
 class Event(db.Model):
     __tablename__ = 'events'
