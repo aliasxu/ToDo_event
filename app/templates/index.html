@@ -13,9 +13,22 @@
     </h1>
 </div>
 <div>
-    <a href="{{ url_for('main.add_todo') }}">Add_TODO</a>
+    {% if  current_user.is_authenticated %}
+    <div class="waves-effect waves-light btn input-field right" id="new-item">
+        <a class="matericl-icon right" href="{{ url_for('main.add_todo') }}">Add_TODO</a>
+    </div>
+    <br>
+    <br>
+    {% endif %}
 </div>
+<div>您的待办事件：</div>
+<div>
 {% for event in events %}
-{{ event.title }}
+    <p class="card-panel hoverable" id="item1">
+        <a href="{{ url_for('main.Details',id=event.id)}}" >{{ event.title }}</a>
+        <a class="edit-btn right" id="2" href="{{ url_for('main.Details',id=event.id) }}">详情</a>
+    </p>
+
 {% endfor %}
 {% endblock %}
+</div>

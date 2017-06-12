@@ -32,5 +32,9 @@ def add_todo():
         return redirect(url_for('.index'))
     return render_template('todo.html',form=form)
 
-
-
+#待办事件详情
+@main.route('/detail/<int:id>')
+@login_required
+def Details(id):
+    event = Event.query.get_or_404(id)
+    return render_template('detail.html',event=event)

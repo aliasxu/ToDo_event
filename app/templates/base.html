@@ -1,7 +1,10 @@
 {% extends 'bootstrap/base.html' %}
 
-{% block title %}TODO-Event{% endblock %}
-
+{% block head %}
+{{ super() }}
+<link href="//cdn.bootcss.com/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css' )}}" >
+{% endblock %}
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
