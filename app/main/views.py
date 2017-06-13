@@ -38,3 +38,13 @@ def add_todo():
 def Details(id):
     event = Event.query.get_or_404(id)
     return render_template('detail.html',event=event)
+
+#已完成待办事件
+@main.route('/finish/<int:id>')
+@login_required
+def finish(id):
+    event = Event.query.get_or_404(id)
+    event.finish = True
+    db.session.add(event)
+    flash(u"该事件已完成")
+    return redirect(url_for('.index'))
