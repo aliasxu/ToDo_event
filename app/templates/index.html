@@ -25,8 +25,11 @@
 <div>
 {% for event in events %}
     <p class="card-panel hoverable" id="item1">
+        {% if not event.finish %}
         <a href="{{ url_for('main.Details',id=event.id)}}" >{{ event.title }}</a>
         <a class="edit-btn right" id="2" href="{{ url_for('main.Details',id=event.id) }}">详情</a>
+        <a class="edit-btn right" id="2" href="{{ url_for('main.finish',id=event.id) }}">完成</a>
+        {% endif %}
     </p>
 
 {% endfor %}
